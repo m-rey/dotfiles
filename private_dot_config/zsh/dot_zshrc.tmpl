@@ -37,8 +37,8 @@ kitty + complete setup zsh | source /dev/stdin
 # set colortheme
 (cat ~/.cache/wal/sequences &)
 
-# load ssh key and gpg-agent on boot
-eval $(keychain --eval --quiet)
+# use .alias file
+[[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
 
 # load thefuck 
 eval "$(thefuck --alias fuck)"
@@ -46,15 +46,6 @@ eval "$(thefuck --alias fuck)"
 # load antibody plugins
 source <(antibody init)
 antibody bundle < ~/.config/zsh/.zsh_plugins
-
-# use .alias file
-[[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
-
-# import custom zshrc configs
-# mrey crazy loading
-for zshrc_config in ${ZDOTDIR}/config.d/**/*.zsh; do
-    source "$zshrc_config"
-done
 
 # use rvm to set ruby version
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -65,3 +56,9 @@ eval "$(register-python-argcomplete pipx)"
 # load nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# import custom zshrc configs
+# {{ .chezmoi.username }} crazy loading
+for zshrc_config in ${ZDOTDIR}/config.d/**/*.zsh; do
+    source "$zshrc_config"
+done

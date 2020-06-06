@@ -1,0 +1,18 @@
+# Base16 Monokai
+set $base00 #272822
+set $base01 #f92672
+set $base02 #a6e22e
+set $base03 #f4bf75
+set $base04 #66d9ef
+set $base05 #ae81ff
+set $base06 #a1efe4
+set $base07 #f8f8f2
+set $base08 #75715e
+set $base09 #f92672
+set $base0A #a6e22e
+set $base0B #f4bf75
+set $base0C #66d9ef
+set $base0D #ae81ff
+set $base0E #a1efe4
+set $base0F #f9f8f5
+

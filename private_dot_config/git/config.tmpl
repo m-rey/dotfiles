@@ -1,0 +1,55 @@
+[user]
+  name = {{ .name_clearname }}
+  email = {{ .email_clearname }}
+  signingkey = {{ .signingkey_clearname }}
+
+[log]
+	showSignature = false # set to true for more verbosity
+
+[transfer]
+	fsckobjects = true
+
+[commit]
+	gpgSign = true
+	verbose = true
+
+[apply]
+        whitespace = fix  # Detect whitespace errors when applying a patch
+
+[tag]
+	forceSignAnnotated = true
+
+[merge]
+	#verifySignatures = true  # Deactivated because noone signs their commits. Use --no-verify-signatures if this is activated and merging/pulling fails. 
+	tool = diffuse
+
+[color]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = true
+
+[pager]
+	# insanely beautiful diffs ==> npm install -g diff-so-fancy
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX
+
+[core]
+	pager = less
+	editor = nvim
+	excludesFile = $HOME/.config/git/ignore  # the default, but now explicit
+
+[diff]
+	renames = copies  # Detect copies as well as renames
+	algorithm = histogram
+	mnemonicprefix = true  # see https://stackoverflow.com/a/28017534 
+
+[include]
+	path = alias  # save alias in another file
+
+[includeIf "gitdir:~/repos/{{ .username_alt }}/"]
+	path = config_alt
+
+[includeIf "gitdir:~/repos/{{ .chezmoi.username }}/"]
+	path = config_clearname

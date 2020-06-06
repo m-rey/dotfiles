@@ -1,0 +1,6 @@
+#show-keyboard-layout
+show-failed-attempts
+ignore-empty-password
+indicator-caps-lock
+daemonize
+color=000000

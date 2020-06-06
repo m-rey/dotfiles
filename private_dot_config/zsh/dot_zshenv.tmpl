@@ -1,0 +1,85 @@
+# environmental stuff
+XDG_CONFIG_HOME=$HOME/.config  # needs to be set as git only loads config from ~/.config/git/gitconfig if it is set. See https://git-scm.com/docs/git-config/2.25.2#Documentation/git-config.txt---global
+LANG=en_US.UTF-8
+TERM="xterm-kitty"
+TERMINAL='kitty'
+BROWSER="firefox '%s' &"
+PAGER='less'
+MANPAGER='less'
+EDITOR='nvim'
+VISUAL='nvim'
+MAN_POSIXLY_CORRECT=true # nicer manpage handling
+WORDCHARS='*?_-.[]~=&;!#$&(){}<>' # for shell word boundaries. Default config, but without '/'
+HISTSIZE=10000 # max length of history file to load
+HISTFILE="$ZDOTDIR/.zsh_history" # set history file location
+#SAVEHIST=$HISTSIZE # needed for history to be saved
+SAVEHIST=1000000 # TODO: switch to line above if errors occur
+
+# Print timing statistics for everything which takes longer than 5 seconds of
+# user + system time ('sleep 6' does not work because of 0% user/system time!).
+REPORTTIME=5
+
+# set hilighters
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# set ssh key path
+#SSH_KEY_PATH="~/.ssh/id_rsa"
+
+# wayland compatibility
+GDK_BACKEND='wayland' # use wayland as default for GDK stuff like LibreOffice. # TODO: DELETE IF THINS ARE BROKEN
+MOZ_ENABLE_WAYLAND=1 #enable wayland support in Firefox # TODO: DISABLE IF BROKEN on Firefox >=73
+_JAVA_AWT_WM_NONREPARENTING=1 # fix java stuff in swaywm (especially IntelliJ)
+[ "$XDG_SESSION_DESKTOP" = "sway" ] && QT_QPA_PLATFORMTHEME="wayland"
+[ "$QT_QPA_PLATFORMTHEME" = "wayland" ] && QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+
+# fzf
+# --files: List files that would be searched but do not search# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# long date format in ls(1)
+TIME_STYLE=long-iso
+
+# colored less
+LESS_TERMCAP_mb=$'\E[01;31m'
+LESS_TERMCAP_md=$'\E[01;31m'
+LESS_TERMCAP_me=$'\E[0m'
+LESS_TERMCAP_se=$'\E[0m'
+LESS_TERMCAP_so=$'\E[01;47;34m'
+LESS_TERMCAP_ue=$'\E[0m'
+LESS_TERMCAP_us=$'\E[01;32m'
+LESS=-r
+#GROFF_NO_SGR=1  # for konsole and gnome-terminal
+
+# don't load the config twice (first default then local one)
+RANGER_LOAD_DEFAULT_RC="FALSE"
+
+# PATH stuff
+typeset -U PATH path
+path=("$HOME/.local/bin" "$path[@]" "$HOME/.rvm/bin") 
+# homebrew/linuxbrew stuff
+# created a: ~/.linuxbrew/bin/brew shellenv
+# alternative: eval $(~/.linuxbrew/bin/brew shellenv)
+HOMEBREW_PREFIX="$HOME/.linuxbrew";
+HOMEBREW_CELLAR="$HOME/.linuxbrew/Cellar";
+HOMEBREW_REPOSITORY="$HOME/.linuxbrew/Homebrew";
+MANPATH="$HOME/.linuxbrew/share/man:$MANPATH";
+INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH";
+
+# set path
+PATH=~/go/bin:~/bin:~/.cargo/bin:~/.yarn/bin:~/.rbenv/bin:~/.cabal/bin/:~/.emacs.d/bin/:~/.local/bin:~/.linuxbrew/bin:~/.linuxbrew/sbin:$PATH
+
+# enable special hardened mode in Docker
+# if "Error: remote trust data does not exist" error appears,
+# it may be worked aound by adding the "--disable-content-trust" flag
+DOCKER_CONTENT_TRUST=1
+
+# set nvm directory
+NVM_DIR="$HOME/.nvm"
+
+# disable annoying bells
+xset b off
+
+# stop triggering cnf when a command is not found
+unset command_not_found_handle

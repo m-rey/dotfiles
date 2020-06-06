@@ -1,0 +1,11 @@
+# output notification on main display
+output={{ .monitor_work }}
+
+#display notification for 10s -> 10000ms
+default-timeout=10000
+
+# programs can't set custom timeout for their notification
+ignore-timeout=1
+
+# display it on top of everything
+layer=overlay

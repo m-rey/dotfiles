@@ -1,0 +1,16 @@
+# Don't overwhelm with highlighting.
+# Inspired by https://blog.patshead.com/2012/01/using-and-customizing-zsh-syntax-highlighting-with-oh-my-zsh.html
+# See https://github.com/zsh-users/zsh-syntax-highlighting/tree/master/highlighters/main
+ZSH_HIGHLIGHT_STYLES[default]=none
+ZSH_HIGHLIGHT_STYLES[alias]=none
+ZSH_HIGHLIGHT_STYLES[builtin]=none
+ZSH_HIGHLIGHT_STYLES[function]=none
+ZSH_HIGHLIGHT_STYLES[command]=none
+ZSH_HIGHLIGHT_STYLES[precommand]=none
+ZSH_HIGHLIGHT_STYLES[commandseparator]=none
+ZSH_HIGHLIGHT_STYLES[hashed-command]=none
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[reserved-word]='bold,underline'
+ZSH_HIGHLIGHT_STYLES[unknown-token]=underline
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=bold
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=bold

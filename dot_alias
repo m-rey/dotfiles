@@ -1,0 +1,21 @@
+alias iosc="osc -A https://api.suse.de"
+alias g="git"
+alias o="xdg-open"
+alias history_date="fc -li 1"
+alias h='history_date | rg'
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -l'
+alias lah='ls -lah'
+alias firefox_clean='firefox --new-instance --profile $(mktemp -d)'
+alias chromium_clean='chromium --user-data-dir $(mktemp -d)'
+alias x="atool --extract $@"
+alias fu="fuck"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias keybindings="rg '^bind' ~/.config/sway/config | cut -d ' ' -f 2- | sed 's/ /\t/' | column -ts $'\t' | pr -2 -w 145 -t | less"
+alias map="telnet mapscii.me"
+alias diff="diff --color=auto"
+alias cm="chezmoi"
+alias rg="rg --hidden --auto-hybrid-regex --smart-case"

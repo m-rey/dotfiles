@@ -1,0 +1,6 @@
+# start sway automatically from tty1
+if [ "$(tty)" = "/dev/tty1" ]; then
+    export XDG_SESSION_DESKTOP="sway"
+    exec sway
+fi
+

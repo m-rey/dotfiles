@@ -1,0 +1,125 @@
+[alias]
+  
+        # Blog Post: Human Git Aliases; http://gggritso.com/human-git-aliases
+	# https://github.com/gggritso/dotfiles/blob/master/gitconfig.symlink
+	# BEGIN HUMAN
+	#----
+	amend       = commit --amend
+	back        = checkout "-"
+	branches    = branch -a
+	branchout   = checkout -b
+	branch-name = rev-parse --abbrev-ref HEAD
+	contributors= shortlog -s -n
+	down        = pull --rebase
+	discard     = checkout --
+	dump        = cat-file -p
+	filetrail   = git log --follow -p -w
+	graph       = log --graph -10 --branches --remotes --tags\
+			  --format=format:'%Cgreen%h %Creset %<(75,trunc)%s (%cN, %ar) %Cred%d' --date-order
+
+	history     = l --graph
+	ignore      = update-index --assume-unchanged
+	ignored     = ls-files -o -i --exclude-standard   # Show files ignored by git:
+	invert      = revert
+	incoming    = log orgin/master ^master            # show only what is in orgin/master that isn't in master
+	last        = log -1 HEAD --format=format:"%Cred%H"
+	logs        = log --stat
+	mergetrail  = log --ancestry-path --merges
+	move        = mv
+	nevermind   = !git reset --hard HEAD && git clean -d -f
+	outgoing    = log master ^orgin/master            # show only what is in master that isn't in orgin/master
+	praise      = blame
+	precommit   = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
+	prestage    = diff -w --word-diff=color
+	remotes     = remote -v
+	remove      = rm
+	resave      = commit --amend
+	rewrite     = rebase -i
+	ru          = log --since=\"one week ago\" --all --no-merges --oneline #--author=\"Martin Rey\"
+	#rushes      = log --since=\"1970-01-01 00:00:00\" --all --no-merges --oneline #--author=\"Martin Rey\"
+	rushes      = log --since=\"one week ago\" --all --no-merges --oneline #--author=\"Martin Rey\"
+	save        = commit -am
+	show-all    = log --follow
+	shop-all    = log --follow -p
+	stashes     = stash list
+	summary     = status -u -s
+	tags        = tag
+	type        = cat-file -t
+	uncommit    = reset --mixed HEAD~
+	undo        = reset --soft HEAD~1
+	unignore    = update-index --no-assume-changed
+	unmerged    = branch --no-merged
+	unmerged    = diff -w --name-only --diff-filter=U
+	unstage     = reset -q HEAD --
+	unstash     = stash pop
+	untrack     = rm -r --cached
+	up          = push up master
+	what        = show -w
+	#----
+	# END HUMAN
+
+        l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	lgd = l -p
+	lgs = l --stat
+	ls = ls-files
+	a = add
+	aa = add --verbose -A
+	ap = add -v -p
+	au = add -v -u
+	b = branch
+	c = commit --verbose
+	ca = commit --verbose --all
+	cm = commit --verbose --message
+	cam = commit --verbose --all --message
+        m = commit --verbose --amend
+        mne = commit --verbose --amend --no-edit
+
+	d = diff
+	ds = diff --stat
+	dc = diff --cached
+        # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+        di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+	s = status -s
+	co = checkout
+	cob = checkout -b
+    
+	cl = clone
+	# list branches sorted by last modified
+	br = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+	la = "!git config -l | grep alias | cut -c 7-"
+	undo-commit = "!f() { git format-patch HEAD^ && git reset --hard HEAD~; }; f"
+	r = remote
+	rv = remote -v
+	ra = remote add
+	rao = remote add origin
+	diff-file-last-commit = "!f() { \
+            project_root_dir=$(git rev-parse --show-toplevel); \
+            echo finding full file path of $1 in $project_root_dir; \
+            filepath=$(find $project_root_dir -type f -name $1); \
+            echo full file path $filepath; \
+            last_modified_commit_hash=$(git rev-list -1 HEAD $filepath); \
+            echo last commit file modified $last_modified_commit_hash; \
+            git difftool $last_modified_commit_hash^ $filepath; \
+       }; f"
+	mergetest = "!f(){ git merge --no-commit --no-ff \"$1\"; git merge --abort; echo \"Merge aborted\"; };f "
+	#branch delete: This checks out your local master branch and deletes all local branches
+	#that have already been merged to master
+	brd = !sh -c \"git checkout master && git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
+	#branch delete here: Deletes all local branches that have already been merged to the branch
+	#that you're currently on
+	brdhere = !sh -c \"git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d\"
+	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	uncommit = "!f() { git format-patch HEAD^ && git reset --hard HEAD~; };f"
+	ps = push
+        psf = push --force
+	psfwl = push --force-with-lease
+        pl = pull
+	plr = pull --rebase
+	plnvs = pull --no-verify-signatures
+	plrnvs = pull --rebase --no-verify-signatures
+	psuo = "!f(){ git push --set-upstream origin $(git symbolic-ref --short HEAD); };f"
+	ff = merge --ff --ff-only @{u}
+	reset-remote = "!f(){ git fetch origin; git reset --hard ${1:-'@{u}'}; git clean -f -d -x; };f"
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+

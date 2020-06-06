@@ -1,0 +1,67 @@
+# load basic modules
+autoload -Uz compinit bashcompinit colors
+bashcompinit
+colors
+
+# only check cached .zcompdump file once a day
+# see https://gist.github.com/ctechols/ca1035271ad134841284
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
+
+# set zsh usage options
+setopt no_complete_aliases # https://superuser.com/a/445491
+                           # this ACTIVATES alias completion. I know that it looks wrong
+setopt extendedglob
+setopt prompt_subst
+setopt autocd
+setopt append_history
+setopt share_history
+setopt extended_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt globdots
+setopt interactivecomments
+
+# autocompletion
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # complete files/dirs with colors
+zstyle ':completion:::::' completer _complete _approximate
+zstyle -e ':completion:*:approximate:*' \
+        max-errors 'reply=($((($#PREFIX+$#SUFFIX)/4))numeric)'
+kitty + complete setup zsh | source /dev/stdin
+
+# set colortheme
+(cat ~/.cache/wal/sequences &)
+
+# load ssh key and gpg-agent on boot
+eval $(keychain --eval --quiet)
+
+# load thefuck 
+eval "$(thefuck --alias fuck)"
+
+# load antibody plugins
+source <(antibody init)
+antibody bundle < ~/.config/zsh/.zsh_plugins
+
+# use .alias file
+[[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
+
+# import custom zshrc configs
+# mrey crazy loading
+for zshrc_config in ${ZDOTDIR}/config.d/**/*.zsh; do
+    source "$zshrc_config"
+done
+
+# use rvm to set ruby version
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# enable pipx completions
+eval "$(register-python-argcomplete pipx)"
+
+# load nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

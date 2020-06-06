@@ -143,20 +143,6 @@ floating_modifier $mod normal
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
-# shutdown management
-set $exitmenu "system:  [s]hutdown [l]ock [r]eboot [e]xit [h]ibernate sus[p]end"
-bindsym Shift+$mod+m      mode $exitmenu
-mode $exitmenu {
-	bindsym s         exec systemctl poweroff, mode "default"
-	bindsym Shift+s   exec systemctl poweroff -i, mode "default"
-	bindsym l         exec '$lockscreen', mode "default"
-	bindsym r         exec systemctl reboot, mode "default"
-	bindsym e         exec swaymsg exit, mode "default"
-	bindsym h         exec $lockscreen && exec systemctl hibernate, mode "default" 
-	bindsym p 	  exec $lockscreen && systemctl suspend, mode "default"
-	bindsym Return    mode "default"
-	bindsym Escape    mode "default"
-}
 
 # dismiss first notification
 bindsym $mod+i exec makoctl dismiss 
@@ -368,4 +354,4 @@ client.background       $base07
 include ./`hostname`
 
 ### further configs
-include ./config.d/** # change ** to * if not working
+include ./config.d/*

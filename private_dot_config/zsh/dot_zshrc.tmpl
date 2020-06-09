@@ -11,6 +11,9 @@ else
 	compinit -C;
 fi;
 
+# add autocomplete for aliases
+compdef g=git iosc=osc cm=chezmoi
+
 # set zsh usage options
 setopt no_complete_aliases # https://superuser.com/a/445491
                            # this ACTIVATES alias completion. I know that it looks wrong

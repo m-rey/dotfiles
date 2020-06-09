@@ -56,15 +56,16 @@ eval "$(thefuck --alias fuck)"
 source <(antibody init)
 antibody bundle < ~/.config/zsh/.zsh_plugins
 
-# use rvm to set ruby version
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # enable pipx completions
 eval "$(register-python-argcomplete pipx)"
 
+# use rvm to set ruby version
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 # load nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # import custom zshrc configs
 # {{ .chezmoi.username }} crazy loading

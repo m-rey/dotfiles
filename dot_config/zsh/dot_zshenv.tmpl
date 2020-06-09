@@ -47,9 +47,9 @@ export TIME_STYLE=long-iso
 # from: https://wiki.archlinux.org/index.php/Color_output_in_console#man
 export LESS="--RAW-CONTROL-CHARS"
 export LESS_TERMCAP_mb=$'\e[1;31m'     # begin bold
-export LESS_TERMCAP_md=$'\e[1;33m'     # begin blink
-export LESS_TERMCAP_so=$'\e[01;44;37m' # begin reverse video
-export LESS_TERMCAP_us=$'\e[01;37m'    # begin underline
+export LESS_TERMCAP_md=$'\e[1;31m'     # begin blink
+export LESS_TERMCAP_so=$'\e[01;44;33m' # begin reverse video
+export LESS_TERMCAP_us=$'\e[01;32m'    # begin underline
 export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
 export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
@@ -90,3 +90,5 @@ xset b off
 
 # stop triggering cnf when a command is not found
 unset command_not_found_handle
+
+# vim:filetype=zsh expandtab shiftwidth=4

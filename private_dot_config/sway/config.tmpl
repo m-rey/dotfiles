@@ -87,6 +87,10 @@ exec swayidle -w \
 for_window [class="^.*"] inhibit_idle fullscreen
 for_window [app_id="^.*"] inhibit_idle fullscreen
 
+# Clamshell Mode (disable laptop screen output when lid is closed)
+# See https://github.com/swaywm/sway/wiki#clamshell-mode
+bindswitch --reload --locked lid:on output $monitor_notebook disable
+bindswitch --reload --locked lid:off output $monitor_notebook enable
 
 ### Input configuration
 # Note: You can get the names of your inputs by running: swaymsg -t get_inputs

@@ -16,9 +16,9 @@ done
 # only check cached .zcompdump file once a day
 # see https://gist.github.com/ctechols/ca1035271ad134841284
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-	compinit;
+  compinit;
 else
-	compinit -C;
+  compinit -C;
 fi;
 
 # add autocomplete for aliases
@@ -31,26 +31,60 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt auto_pushd
 setopt autocd
+setopt completeinword  # tab-complete while cursor is in word
 setopt extended_history
-setopt extendedglob
-setopt globdots
+setopt extendedglob  # use nice things like exceptions in globs: `git add */*.txt~*/secret.txt`
+setopt globdots  # match dotfiles
 setopt hist_ignore_all_dups  # remove older duplicate entries from history
 setopt hist_ignore_space
 setopt hist_reduce_blanks  # remove superfluous blanks from history items
-setopt interactivecomments
+setopt interactivecomments  # alows to coment out stuff directy in terminal
 setopt no_complete_aliases # https://superuser.com/a/445491
                            # this ACTIVATES alias completion. I know that it looks wrong
+setopt nobeep  # no beeps
 setopt prompt_subst
 setopt pushd_ignore_dups
 setopt share_history  # share history between different instances of the shell
 
-# autocompletion
-zstyle ':completion:*' menu select  # select completions with arrow keys
-zstyle ':completion:*' group-name '' # group results by category
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # complete files/dirs with colors
-zstyle ':completion:::::' completer _expand _complete _approximate
-zstyle -e ':completion:*:approximate:*' \
-        max-errors 'reply=($((($#PREFIX+$#SUFFIX)/4))numeric)'
+# autocompletion # TODO: research better explanations
+zstyle ':completion:*'                            matcher-list 'm:{a-z}={A-Z}'  # also match uppercase with lowercase
+zstyle ':completion:*'                            menu select  # select completions with arrow keys
+zstyle ':completion:*'                            list-colors "${(s.:.)LS_COLORS}"  # complete files/dirs with colors
+# group results by category
+zstyle ':completion:*:matches'                    group 'yes'
+zstyle ':completion:*'                            group-name ''
+zstyle ':completion:::::'                         completer _expand _complete  # completer expands and completes
+zstyle ':completion:*:options'                    description 'yes'  # describe options in full
+zstyle ':completion:*:processes'                  command 'ps -au$USER'  # on processes completion complete all user processes
+zstyle -e ':completion:*:approximate:*'           max-errors 'reply=($((($#PREFIX+$#SUFFIX)/4))numeric)'  # autocorrect based on input length
+zstyle ':completion:*:messages'                   format '%d'  # format messages?
+zstyle ':completion:*:*:-subscript-:*'            tag-order indexes parameters  # offer indexes before parameters in subscripts
+#zstyle ':completion:*'                            verbose true  # provide verbose completion information
+zstyle ':completion::(^approximate*):*:functions' ignored-patterns '_*'  # Ignore completion functions for commands you don't have
+zstyle ':completion:*:processes-names'            command 'ps c -u ${USER} -o command | uniq'  # Provide more processes in completion of programs like killall
+zstyle ':completion:*:sudo:*'                     command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin  # Search path for sudo completion
+zstyle ':completion:*'                            use-cache yes  # use cache to speed up completions
+zstyle ':completion:*:complete:*'                 cache-path "$XDG_CACHE_HOME"
+#zstyle ':completion:*:warnings'                  format $'%{\e[0;31m%}No matches for:%{\e[0m%} %d'  # set format for warnings
+#zstyle ':completion:*:default'                   list-colors ${(s.:.)LS_COLORS}  # activate color-completion
+
+# manage descriptions
+zstyle ':completion:*:options'                    auto-description '%d'
+zstyle ':completion:*:descriptions'               format $'%{\e[0;31m%}%B%d%b%{\e[0m%}'  # add completion descriptions. Put custom text between "%}" and "%B"
+# start menu completion only if it could find no unambiguous initial string
+zstyle ':completion:*:correct:*'                  insert-unambiguous true
+zstyle ':completion:*:correct:*'                  original true
+zstyle ':completion:*:corrections'                format $'%{\e[0;31m%}%d (errors: %e)%{\e[0m%}'
+# insert all expansions for expand completer
+zstyle ':completion:*:expand:*'                   tag-order all-expansions
+# activate menu
+zstyle ':completion:*:history-words'              list false
+zstyle ':completion:*:history-words'              menu yes
+# complete manual by their section
+zstyle ':completion:*:manuals.*'                  insert-sections   true
+zstyle ':completion:*:manuals'                    separate-sections true
+zstyle ':completion:*:man:*'                      menu yes select
+
 kitty + complete setup zsh | source /dev/stdin
 
 # set colortheme
@@ -81,6 +115,6 @@ eval "$(register-python-argcomplete pipx)"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#zprof  # uncomment this and part at the beginning to check startup speed
+#zprof  # uncomment this and part at the beginning to check startup speed 
 
 # vim:filetype=zsh expandtab shiftwidth=4

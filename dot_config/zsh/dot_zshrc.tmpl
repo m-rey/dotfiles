@@ -56,6 +56,9 @@ kitty + complete setup zsh | source /dev/stdin
 # set colortheme
 (cat ~/.cache/wal/sequences &)
 
+# set ls colors
+#[[ $(command -v dircolors) ]] && eval $(dircolors -b)
+
 # use .alias file
 [[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
 

@@ -15,24 +15,30 @@ fi;
 compdef g=git iosc=osc cm=chezmoi
 
 # set zsh usage options
+setopt always_to_end # move cursor to end if word had one match
+setopt append_history
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt auto_pushd
+setopt autocd
+setopt extended_history
+setopt extendedglob
+setopt globdots
+setopt hist_ignore_all_dups  # remove older duplicate entries from history
+setopt hist_ignore_space
+setopt hist_reduce_blanks  # remove superfluous blanks from history items
+setopt interactivecomments
 setopt no_complete_aliases # https://superuser.com/a/445491
                            # this ACTIVATES alias completion. I know that it looks wrong
-setopt extendedglob
 setopt prompt_subst
-setopt autocd
-setopt append_history
-setopt share_history
-setopt extended_history
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
-setopt globdots
-setopt interactivecomments
+setopt pushd_ignore_dups
+setopt share_history  # share history between different instances of the shell
 
 # autocompletion
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select  # select completions with arrow keys
+zstyle ':completion:*' group-name '' # group results by category
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # complete files/dirs with colors
-zstyle ':completion:::::' completer _complete _approximate
+zstyle ':completion:::::' completer _expand _complete _approximate
 zstyle -e ':completion:*:approximate:*' \
         max-errors 'reply=($((($#PREFIX+$#SUFFIX)/4))numeric)'
 kitty + complete setup zsh | source /dev/stdin

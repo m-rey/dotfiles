@@ -52,10 +52,11 @@ kitty + complete setup zsh | source /dev/stdin
 # load thefuck 
 eval "$(thefuck --alias fuck)"
 
-# load antibody plugins
-source <(antibody init)
-antibody bundle < ~/.config/zsh/.zsh_plugins
-
+# dynamic load antibody plugins
+#source <(antibody init)
+#antibody bundle < ~/.config/zsh/.zsh_plugins
+# static load antibody plugins
+source "$ZDOTDIR/.zsh_plugins.sh"
 
 # enable pipx completions
 eval "$(register-python-argcomplete pipx)"

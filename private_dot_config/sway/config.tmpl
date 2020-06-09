@@ -24,8 +24,8 @@ set $term kitty
 # application launcher to use
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $appmenu rofi -show drun | xargs swaymsg exec
-set $climenu rofi -modi 'run,ssh,window,drun' -show run | xargs swaymsg exec
+set $appmenu wofi --show drun | xargs swaymsg exec
+set $climenu wofi --show run | xargs swaymsg exec
 
 # fzf in kitty as app launcher
 set $fzf_launcher kitty --config \"$HOME/.config/kitty/fzf-launcher.config\" --class fzf-launcher --detach

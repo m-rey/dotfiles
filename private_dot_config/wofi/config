@@ -1,0 +1,6 @@
+allow_images=true
+allow_markup=true
+hide_scroll=true
+no_actions=true
+image_size=25
+lines=12

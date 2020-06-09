@@ -28,7 +28,7 @@ set $appmenu wofi --show drun | xargs swaymsg exec
 set $climenu wofi --show run | xargs swaymsg exec
 
 # fzf in kitty as app launcher
-set $fzf_launcher kitty --config \"$HOME/.config/kitty/fzf-launcher.config\" --class fzf-launcher --detach
+set $fzf_launcher kitty --config \"$HOME/.config/kitty/fzf-launcher.conf\" --class fzf-launcher --detach
 set $fzf_options --reverse
 #set $menu $fzf_launcher sh -c \"dmenu_path | fzf $fzf_options| xargs -r swaymsg exec\"
 for_window [app_id="fzf-launcher"] focus, floating enabled, border pixel 1
@@ -353,7 +353,7 @@ client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
 ### further configs based on host
-include ./`hostname`
+include "./`hostname`.conf"
 
 ### further configs
-include ./config.d/*
+include ./config.d/*.conf

@@ -1,3 +1,7 @@
+#! /bin/zsh
+
+#zmodload zsh/zprof  # uncomment here and the part at the end to check startup speed.
+
 # load basic modules
 autoload -Uz compinit bashcompinit colors
 bashcompinit
@@ -73,4 +77,6 @@ eval "$(register-python-argcomplete pipx)"
 for zshrc_config in ${ZDOTDIR}/config.d/**/*.zsh; do
     source "$zshrc_config"
 done
+#zprof  # uncomment this and part at the beginning to check startup speed
+
 # vim:filetype=zsh expandtab shiftwidth=4

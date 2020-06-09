@@ -7,6 +7,12 @@ autoload -Uz compinit bashcompinit colors
 bashcompinit
 colors
 
+# import custom zshrc configs
+# {{ .chezmoi.username }} crazy loading
+for zshrc_config in ${ZDOTDIR}/config.d/*.zsh; do
+    source "$zshrc_config"
+done
+
 # only check cached .zcompdump file once a day
 # see https://gist.github.com/ctechols/ca1035271ad134841284
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
@@ -72,11 +78,6 @@ eval "$(register-python-argcomplete pipx)"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# import custom zshrc configs
-# {{ .chezmoi.username }} crazy loading
-for zshrc_config in ${ZDOTDIR}/config.d/**/*.zsh; do
-    source "$zshrc_config"
-done
 #zprof  # uncomment this and part at the beginning to check startup speed
 
 # vim:filetype=zsh expandtab shiftwidth=4

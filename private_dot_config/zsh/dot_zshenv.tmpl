@@ -6,15 +6,14 @@ export TERM="xterm-kitty"
 export TERMINAL='kitty'
 export BROWSER="firefox '%s' &"
 export PAGER='less'
-export MANPAGER='less'
+export MANPAGER='less -s -M +Gg'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export MAN_POSIXLY_CORRECT=true # nicer manpage handling
 export WORDCHARS='*?_-.[]~=&;!#$&(){}<>' # for shell word boundaries. Default config, but without '/'
-export HISTSIZE=10000 # max length of history file to load
+export HISTSIZE=1000000 # max length of history file to load
 export HISTFILE="$ZDOTDIR/.zsh_history" # set history file location
-#export SAVEHIST=$HISTSIZE # needed for history to be saved
-export SAVEHIST=1000000 # TODO: switch to line above if errors occur
+export SAVEHIST=$HISTSIZE # needed for history to be saved
 
 # Print timing statistics for everything which takes longer than 5 seconds of
 # user + system time ('sleep 6' does not work because of 0% user/system time!).

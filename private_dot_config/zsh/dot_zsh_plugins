@@ -7,6 +7,7 @@ rupa/z
 romkatv/powerlevel10k
 # StackExchange/blackbox
 Shougo/deoplete.nvim
+zsh-users/zsh-completions
 # beeender/Comrade
 # RobSis/zsh-completion-generator
 # smallhadroncollider/antigen-git-rebase

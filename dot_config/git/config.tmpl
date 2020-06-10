@@ -31,9 +31,10 @@
 	interactive = true
 
 [pager]
-	# insanely beautiful diffs ==> npm install -g diff-so-fancy
-	diff = diff-so-fancy | less --tabs=4 -RFX
-	show = diff-so-fancy | less --tabs=4 -RFX
+        # insanely beautiful diffs ==> npm install -g diff-so-fancy
+        diff = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)  # use diff-so-fancy if available, diff otherwise
+        show = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)  # use diff-so-fancy if available, diff otherwise
+
 
 [core]
 	pager = less

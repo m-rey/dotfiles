@@ -39,7 +39,8 @@ call plug#end()
 syntax enable                             
 colorscheme wal
 "let g:airline_theme='base16'
-set noshowmode               
+set showmode               
+set expandtab
 set shiftwidth=2
 set autoindent
 set smartindent

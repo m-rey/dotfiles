@@ -19,6 +19,9 @@
 [tag]
 	forceSignAnnotated = true
 
+[pull]
+        rebase = true  # rebase instead of merge when pulling. Use --no-rebase flag to set back to merge
+
 [merge]
 	#verifySignatures = true  # Deactivated because noone signs their commits. Use --no-verify-signatures if this is activated and merging/pulling fails. 
 	tool = diffuse

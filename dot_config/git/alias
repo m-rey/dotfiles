@@ -116,8 +116,10 @@
 	psfwl = push --force-with-lease
         pl = pull
 	plr = pull --rebase
-	plnvs = pull --no-verify-signatures
+        plm = pull --no-rebase
+        plnvs = pull --no-verify-signatures
 	plrnvs = pull --rebase --no-verify-signatures
+        plmnvs = pull --no-rebase --no-verify-signatures
 	psuo = "!f(){ git push --set-upstream origin $(git symbolic-ref --short HEAD); };f"
 	ff = merge --ff --ff-only @{u}
 	reset-remote = "!f(){ git fetch origin; git reset --hard ${1:-'@{u}'}; git clean -f -d -x; };f"

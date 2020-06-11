@@ -1,61 +1,60 @@
 [user]
-  name = {{ .name_clearname }}
-  email = {{ .email_clearname }}
-  signingkey = {{ .signingkey_clearname }}
+    name = {{ .name_clearname }}
+    email = {{ .email_clearname }}
+    signingkey = {{ .signingkey_clearname }}
 
 [log]
-	showSignature = false # set to true for more verbosity
+    showSignature = false # set to true for more verbosity
 
 [transfer]
-	fsckobjects = true
+    fsckobjects = true
 
 [commit]
-	gpgSign = true
-	verbose = true
+    gpgSign = true
+    verbose = true
 
 [apply]
-        whitespace = fix  # Detect whitespace errors when applying a patch
+    whitespace = fix  # Detect whitespace errors when applying a patch
 
 [tag]
-	forceSignAnnotated = true
+    forceSignAnnotated = true
 
 [pull]
-        rebase = true  # rebase instead of merge when pulling. Use --no-rebase flag to set back to merge
+    rebase = true  # rebase instead of merge when pulling. Use --no-rebase flag to set back to merge
 
 [merge]
-	#verifySignatures = true  # Deactivated because noone signs their commits. Use --no-verify-signatures if this is activated and merging/pulling fails. 
-	tool = diffuse
+    #verifySignatures = true  # Deactivated because noone signs their commits. Use --no-verify-signatures if this is activated and merging/pulling fails. 
+    tool = diffuse
 
 [color]
-	ui = true
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = true
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = true
 
 [pager]
-        # insanely beautiful diffs ==> npm install -g diff-so-fancy
-        diff = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)  # use diff-so-fancy if available, diff otherwise
-        show = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)  # use diff-so-fancy if available, diff otherwise
-
+    # insanely beautiful diffs ==> npm install -g diff-so-fancy
+    diff = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)  # use diff-so-fancy if available, diff otherwise
+    show = (command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less)  # use diff-so-fancy if available, diff otherwise
 
 [core]
-	pager = less
-	editor = nvim
-	excludesFile = $HOME/.config/git/ignore  # the default, but now explicit
+    pager = less
+    editor = nvim
+    excludesFile = $HOME/.config/git/ignore  # the default, but now explicit
 
 [diff]
-	renames = copies  # Detect copies as well as renames
-	algorithm = histogram
-	mnemonicprefix = true  # see https://stackoverflow.com/a/28017534 
+    renames = copies  # Detect copies as well as renames
+    algorithm = histogram
+    mnemonicprefix = true  # see https://stackoverflow.com/a/28017534 
 
 [include]
-	path = alias  # save alias in another file
+    path = alias  # save alias in another file
 
 [includeIf "gitdir:~/repos/{{ .username_alt }}/"]
-	path = config_alt
+    path = config_alt
 
 [includeIf "gitdir:~/repos/{{ .chezmoi.username }}/"]
-	path = config_clearname
+    path = config_clearname
 
 # vim:filetype=gitconfig expandtab shiftwidth=4

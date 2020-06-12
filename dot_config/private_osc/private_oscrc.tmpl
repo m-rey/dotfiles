@@ -45,7 +45,7 @@ build-jobs = 4
 # values are ext3(default) ext4 xfs reiserfs btrfs
 #build-vmdisk-filesystem = ext4
 # Numeric uid:gid to assign to the "abuild" user in the build-root
-# or "caller" to use the current {{ .chezmoi.group }} uid:gid
+# or "caller" to use the current users uid:gid
 # This is convenient when sharing the buildroot with ordinary userids
 # on the host.
 # This should not be 0
@@ -113,9 +113,9 @@ plaintext_passwd = 0
 # set aliases for this apiurl
 # aliases = foo, bar
 # real name used in .changes, unless the one from osc meta prj <user> will be used
-realname = {{ .name_clearname }}
+realname = {{ .persona.real.name }}
 # email used in .changes, unless the one from osc meta prj <user> will be used
-email = {{ .email_clearname }}
+email = {{ .persona.real.email_work }}
 # additional headers to pass to a request, e.g. for special authentication
 #http_headers = Host: foofoobar,
 #       User: mumblegack
@@ -125,10 +125,10 @@ email = {{ .email_clearname }}
 #keyring = 1
 
 [https://api.opensuse.org]
-user={{ .chezmoi.username }}
+user={{ .osc.username_obs }}
 trusted_prj=openSUSE:Factory openSUSE:Tumbleweed openSUSE:Leap:15.0 openSUSE:Leap:15.1 X11:Wayland network devel:languages:rust devel:tools:compiler Archiving:Backup network:utilities openSUSE:Leap:15.1:Update openSUSE:Containers:Leap:15.1 devel:languages:rust:crates
 credentials_mgr_class=osc.credentials.KeyringCredentialsManager:keyring.backends.SecretService.Keyring
 
 [https://api.suse.de]
-user={{ .chezmoi.username }}
+user={{ .osc.username_ibs }}
 credentials_mgr_class=osc.credentials.KeyringCredentialsManager:keyring.backends.SecretService.Keyring

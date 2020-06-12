@@ -100,7 +100,7 @@ storage:
     # initialized with passphrase/repokey encryption. Quote the value if it contains
     # punctuation, so it parses correctly. And backslash any quote or backslash
     # literals as well. Defaults to not set.
-    encryption_passphrase: "{{ .borgmatic_encryption_passphrase }}"
+    encryption_passphrase: "{{ .secret.borgmatic_encryption_passphrase }}"
 
     # Number of seconds between each checkpoint during a long-running backup. See
     # https://borgbackup.readthedocs.io/en/stable/faq.html#if-a-backup-stops-mid-way-does-the-already-backed-up-data-stay-there

@@ -68,8 +68,8 @@ output $monitor_notebook resolution 1920x1080 position 0,1080
 output $monitor_work_rotated resolution 1920x1200 transform 270 position 1920,0
 
 # set wallpapers
-output * bg {{ .wallpaper_fallback }} fill 
-output $monitor_work_rotated bg {{ .wallpaper_monitor_work_rotated }} fill
+output * bg {{ .wallpaper.fallback }} fill 
+output $monitor_work_rotated bg {{ .wallpaper.monitor_work_rotated }} fill
 
 
 ### Idle configuration
@@ -357,7 +357,7 @@ client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
 ### further configs based on host
-include "./`hostname`.conf"
+include "./{{ .chezmoi.fullHostname }}.conf"
 
 ### further configs
 include ./config.d/*.conf

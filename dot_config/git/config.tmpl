@@ -1,7 +1,7 @@
 [user]
-    name = {{ .name_clearname }}
-    email = {{ .email_clearname }}
-    signingkey = {{ .signingkey_clearname }}
+    name = {{ .persona.real.name }}
+    email = {{ .persona.real.email_work }}
+    signingkey = {{ .persona.real.pgp_fingerprint }}
 
 [log]
     showSignature = false # set to true for more verbosity
@@ -51,10 +51,10 @@
 [include]
     path = alias  # save alias in another file
 
-[includeIf "gitdir:~/repos/{{ .username_alt }}/"]
-    path = config_alt
+[includeIf "gitdir:~/repos/{{ .persona.alt.username }}/"]
+    path = config_altpersona
 
-[includeIf "gitdir:~/repos/{{ .chezmoi.username }}/"]
-    path = config_clearname
+[includeIf "gitdir:~/repos/{{ .persona.real.username }}/"]
+    path = config_realpersona
 
 # vim:filetype=gitconfig expandtab shiftwidth=4

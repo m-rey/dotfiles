@@ -1,8 +1,8 @@
 # run the following command when you change something here
-#antibody bundle < "$ZDOTDIR/.zsh_plugins" | sed 's|/home/mrey/.cache|$XDG_CACHE_HOME|g' > "$ZDOTDIR/.zsh_plugins.sh"
+#antibody bundle < "$ZDOTDIR/.zsh_plugins" | sed 's|{{ .chezmoi.homedir }}/.cache|$XDG_CACHE_HOME|g' > "$ZDOTDIR/.zsh_plugins.sh"
 #See https://getantibody.github.io/usage#static-loading
-zsh-users/zsh-syntax-highlighting
-# zdharma/fast-syntax-highlighting
+
+zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 changyuheng/fz
@@ -10,5 +10,6 @@ rupa/z
 romkatv/powerlevel10k
 Shougo/deoplete.nvim
 zsh-users/zsh-completions
+# zsh-users/zsh-syntax-highlighting
 # beeender/Comrade
 # Valiev/almostontop

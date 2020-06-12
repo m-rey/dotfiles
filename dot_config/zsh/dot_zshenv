@@ -58,11 +58,6 @@ export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 # don't load the config twice (first default then local one)
 export RANGER_LOAD_DEFAULT_RC="FALSE"
 
-# set path
-typeset -U PATH path
-path=("$HOME/.local/bin" "$HOME/go/bin" "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.yarn/bin" "$HOME/.rbenv/bin" "$HOME/.cabal/bin" "$HOME/.emacs.d/bin" "$HOME/.linuxbrew/bin" ".linuxbrew/sbin" "$HOME/.rvm/bin" $path)
-export PATH
-
 # set completions path
 typeset -U FPATH fpath
 fpath=("$ZDOTDIR/completions" $fpath)
@@ -84,6 +79,11 @@ export DOCKER_CONTENT_TRUST=1
 
 # set nvm directory
 export NVM_DIR="$HOME/.nvm"
+
+# set path
+typeset -U PATH path
+path=("$HOME/.local/bin" "$NVM_DIR/versions/node/v14.2.0/bin" "$HOME/go/bin" "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.yarn/bin" "$HOME/.rbenv/bin" "$HOME/.cabal/bin" "$HOME/.emacs.d/bin" "$HOME/.linuxbrew/bin" ".linuxbrew/sbin" "$HOME/.rvm/bin" $path)
+export PATH
 
 # disable annoying bells
 xset b off

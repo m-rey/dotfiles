@@ -36,10 +36,6 @@ for_window [app_id="fzf-launcher"] focus, floating enabled, border pixel 1
 # set lock_screen with color
 set $lockscreen swaylock -f -c 000000
 
-# pulseaudio sink
-# TODO; not really necessary, now that you can use @DEFAULT_SINK@
-# set $audio_outputs $(LANG=C pacmd list-sinks | grep 'name: ' | cut -d" " -f2 | sed 's/[<>]//g')
-
 # set workspace assignment
 # Note: Use Arabic numerals here, but Roman numerals in waybar's config to keep ordering correct.
 set $workspace1 1
@@ -251,7 +247,6 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 # mute sound
-#bindsym XF86AudioMute exec pactl set-sink-mute $audio_outputs toggle
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # mute microphone

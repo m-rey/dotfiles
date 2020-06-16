@@ -44,16 +44,19 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export TIME_STYLE=long-iso
 
 # colored less
-# from: https://wiki.archlinux.org/index.php/Color_output_in_console#man
+# adapted from https://wiki.archlinux.org/index.php/Color_output_in_console#man
+# format: '\e[${style};${fgcolor}m' or '\e[${style};${bgcolor};${fgcolor}m'
+# see https://stackoverflow.com/a/2616912 for the ANSI escape code color values
+
 export LESS="--RAW-CONTROL-CHARS"
-export LESS_TERMCAP_mb=$'\e[1;31m'     # begin bold
-export LESS_TERMCAP_md=$'\e[1;31m'     # begin blink
-export LESS_TERMCAP_so=$'\e[01;44;33m' # begin reverse video
-export LESS_TERMCAP_us=$'\e[01;32m'    # begin underline
+export LESS_TERMCAP_md=$'\e[01;31m'    # begin blink
 export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
 export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
+export LESS_TERMCAP_so=$'\e[01;47;30m' # begin reverse video
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
-#export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
+export LESS_TERMCAP_us=$'\e[01;32m'    # begin underline
+export LESS_TERMCAP_mb=$'\e[1;31m'    # begin bold
+export GROFF_NO_SGR=1                  # for konsole and gnome-terminal
 
 # don't load the config twice (first default then local one)
 export RANGER_LOAD_DEFAULT_RC="FALSE"

@@ -45,7 +45,6 @@ set shiftwidth=2
 set autoindent
 set smartindent
 
-
 " move lines up and down with Alt+j / Alt+k
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -61,7 +60,6 @@ inoremap <A-Down> <Esc>:m .+1<CR>==gi
 inoremap <A-Up> <Esc>:m .-2<CR>==gi
 vnoremap <A-Down> :m '>+1<CR>gv=gv
 vnoremap <A-Up> :m '<-2<CR>gv=gv
-
 
 " enable unlimited undos. You can undo changes, even when you closed the
 " terminal!

@@ -46,28 +46,36 @@ setopt prompt_subst
 setopt pushd_ignore_dups
 setopt share_history  # share history between different instances of the shell
 
-# autocompletion # TODO: research better explanations
-zstyle ':completion:*'                            matcher-list 'm:{a-z}={A-Z}'  # also match uppercase with lowercase
-zstyle ':completion:*'                            menu select  # select completions with arrow keys
-zstyle ':completion:*'                            list-colors "${(s.:.)LS_COLORS}"  # complete files/dirs with colors
+# autocompletion
+# See http://zsh.sourceforge.net/Doc/Release/Style-and-Tag-Index.html for more information
+# TODO: check if styles make sense and change them otherwise
+zstyle ':completion:*'                           matcher-list 'm:{a-z}={A-Z}'  # also match uppercase with lowercase
+zstyle ':completion:*'                           menu select  # select completions with arrow keys
+zstyle ':completion:*'                           list-colors "${(s.:.)LS_COLORS}"  # complete files/dirs with colors
+zstyle ':completion:*'                           extra-verbose true  # Enable verbose completions (similar to fish shell)
+zstyle ':completion:*'                           verbose true  # provide verbose completion information
+zstyle ':completion:*:-command-:*:'              verbose true  # Enable command descriptions. Disable if too slow
+# partial completion suggestions: `cd Do/pe` + [TAB] -> Documents/personal
+# See https://scriptingosx.com/2019/07/moving-to-zsh-part-5-completions/
+zstyle ':completion:*'                            list-suffixes
+zstyle ':completion:*'                            expand prefix suffix
 # group results by category
 zstyle ':completion:*:matches'                    group 'yes'
 zstyle ':completion:*'                            group-name ''
-zstyle ':completion:::::'                         completer _expand _complete  # completer expands and completes
+zstyle ':completion:::::'                         completer _expand _complete _approximate
 zstyle ':completion:*:options'                    description 'yes'  # describe options in full
 zstyle ':completion:*:processes'                  command 'ps -au$USER'  # on processes completion complete all user processes
 zstyle -e ':completion:*:approximate:*'           max-errors 'reply=($((($#PREFIX+$#SUFFIX)/4))numeric)'  # autocorrect based on input length
 zstyle ':completion:*:messages'                   format '%d'  # format messages?
 zstyle ':completion:*:*:-subscript-:*'            tag-order indexes parameters  # offer indexes before parameters in subscripts
-#zstyle ':completion:*'                            verbose true  # provide verbose completion information
 zstyle ':completion::(^approximate*):*:functions' ignored-patterns '_*'  # Ignore completion functions for commands you don't have
 zstyle ':completion:*:processes-names'            command 'ps c -u ${USER} -o command | uniq'  # Provide more processes in completion of programs like killall
 zstyle ':completion:*:sudo:*'                     command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin  # Search path for sudo completion
 zstyle ':completion:*'                            use-cache yes  # use cache to speed up completions
 zstyle ':completion:*:complete:*'                 cache-path "$XDG_CACHE_HOME"
+
 #zstyle ':completion:*:warnings'                  format $'%{\e[0;31m%}No matches for:%{\e[0m%} %d'  # set format for warnings
 #zstyle ':completion:*:default'                   list-colors ${(s.:.)LS_COLORS}  # activate color-completion
-
 # manage descriptions
 zstyle ':completion:*:options'                    auto-description '%d'
 zstyle ':completion:*:descriptions'               format $'%{\e[0;31m%}%B%d%b%{\e[0m%}'  # add completion descriptions. Put custom text between "%}" and "%B"
@@ -84,6 +92,17 @@ zstyle ':completion:*:history-words'              menu yes
 zstyle ':completion:*:manuals.*'                  insert-sections   true
 zstyle ':completion:*:manuals'                    separate-sections true
 zstyle ':completion:*:man:*'                      menu yes select
+# determine in which order the names (files) should be listed and completed when using menu completion.
+# `size' to sort them by the size of the file
+# `links' to sort them by the number of links to the file
+# `modification' or `time' or `date' to sort them by the last modification time
+# `access' to sort them by the last access time
+# `inode' or `change' to sort them by the last inode change time
+# `reverse' to sort in decreasing order
+# If the style is set to any other value, or is unset, files will be
+# sorted alphabetically by name.
+zstyle ':completion:*'                            file-sort name
+
 
 kitty + complete setup zsh | source /dev/stdin
 

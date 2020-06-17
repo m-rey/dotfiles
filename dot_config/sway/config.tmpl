@@ -63,6 +63,9 @@ output $monitor_work resolution 1920x1080 position 0,0
 output $monitor_notebook resolution 1920x1080 position 0,1080
 output $monitor_work_rotated resolution 1920x1200 transform 270 position 1920,0
 
+# set initial focus to external monitor, if possible.
+focus output $monitor_work
+
 # set wallpapers
 output * bg {{ .wallpaper.fallback }} fill 
 output $monitor_work_rotated bg {{ .wallpaper.monitor_work_rotated }} fill

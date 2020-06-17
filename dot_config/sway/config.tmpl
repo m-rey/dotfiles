@@ -100,10 +100,10 @@ bindswitch --reload --locked lid:off output $monitor_notebook enable
 #}
 
 # set input layout, compose key for all keyboards
-# TODO: remove deadkeys because compose key can be used instead
 input type:keyboard {
-	xkb_layout de
-	xkb_options compose:caps
+        xkb_layout de
+        xkb_variant nodeadkeys
+        xkb_options compose:caps
 }
 
 # set input settings for all touchpads

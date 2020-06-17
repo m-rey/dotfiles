@@ -351,6 +351,9 @@ client.focused_inactive $color0 $color0 $foreground $color0 $color0
 client.unfocused        $color0 $color0 $foreground $color0 $color0
 client.urgent           $color1 $color1 $color0     $color1 $color1
 
+#### gaps
+gaps inner 10
+
 ### further configs based on host
 include "./{{ .chezmoi.fullHostname }}.conf"
 

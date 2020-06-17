@@ -341,15 +341,9 @@ for_window [app_id="eog"] border none
 include ./autostart
 
 ### Theme
-include ./themes/tomorrow_night
-#### color theme
-##### Property Name     Border  BG      Text    Indicator Child Border
-client.focused          $base0D $base0D $base00 $base0D $base0C
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base00 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+include "$HOME/.cache/wal/colors-sway"
+##### Property Name, Border, BG, Text, Indicator, Child Border
+client.focused $color0 $background $foreground $color7 $background
 
 ### further configs based on host
 include "./{{ .chezmoi.fullHostname }}.conf"

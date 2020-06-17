@@ -1,3 +1,5 @@
+let mapleader = ","
+
 call plug#begin('~/.local/share/nvim/plugged')
 " editing
 Plug 'tpope/vim-surround'           " Add, change, remove parentheses
@@ -11,6 +13,7 @@ Plug 'junegunn/fzf.vim'             " Wrapper around fzf
 Plug 'cespare/vim-toml'             " add syntax support for .toml files
 " Theme
 Plug 'dylanaraps/wal.vim'
+Plug 'chrisbra/Colorizer'
 "Plug 'cormacrelf/vim-colors-github'
 " Autocompletion
 Plug 'roxma/nvim-yarp'
@@ -38,6 +41,11 @@ call plug#end()
 
 syntax enable                             
 colorscheme wal
+let g:colorizer_auto_filetype='css,html,conf,tmpl,theme'
+let g:colorizer_colornames = 0
+let g:colorizer_disable_bufleave = 1
+let g:colorizer_use_virtual_text = 1
+
 "let g:airline_theme='base16'
 set showmode               
 set expandtab

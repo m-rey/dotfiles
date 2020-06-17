@@ -91,6 +91,9 @@ export PATH
 # disable annoying bells
 xset b off
 
+# import colors from wal to use them in other programs
+source "${HOME}/.cache/wal/colors.sh"
+
 # stop triggering cnf when a command is not found
 unset command_not_found_handle
 

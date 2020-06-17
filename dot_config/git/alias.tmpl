@@ -120,3 +120,5 @@ plmnvs   = pull --no-rebase --no-verify-signatures
 psuo     = "!f(){ git push --set-upstream origin $(git symbolic-ref --short HEAD); };f"
 ff       = merge --ff --ff-only @{u}
 reset-remote = "!f(){ git fetch origin; git reset --hard ${1:-'@{u}'}; git clean -f -d -x; };f"
+
+# vim:filetype=gitconfig expandtab shiftwidth=4

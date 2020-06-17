@@ -345,8 +345,11 @@ include ./autostart
 
 ### Theme
 include "$HOME/.cache/wal/colors-sway"
-##### Property Name, Border, BG, Text, Indicator, Child Border
-client.focused $color0 $background $foreground $color7 $background
+#### Property Name, border-main, bg-tab, text-tab, Border-split-side-Indicator, child-Border
+client.focused          $color8 $color8 $foreground $color8 $color3
+client.focused_inactive $color0 $color0 $foreground $color0 $color0
+client.unfocused        $color0 $color0 $foreground $color0 $color0
+client.urgent           $color1 $color1 $color0     $color1 $color1
 
 ### further configs based on host
 include "./{{ .chezmoi.fullHostname }}.conf"

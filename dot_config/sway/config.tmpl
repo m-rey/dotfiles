@@ -74,10 +74,10 @@ output $monitor_work_rotated bg {{ .wallpaper.monitor_work_rotated }} fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-          timeout 300 '$lockscreen' \
-          timeout 600 'swaymsg "output * dpms off"' \
-               resume 'swaymsg "output * dpms on"' \
-          before-sleep '$lockscreen'
+    timeout 300 '$lockscreen' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep '$lockscreen'
 
 # any fullscreen application inhibts idle as well
 for_window [class="^.*"] inhibit_idle fullscreen
@@ -101,9 +101,9 @@ bindswitch --reload --locked lid:off output $monitor_notebook enable
 
 # set input layout, compose key for all keyboards
 input type:keyboard {
-        xkb_layout de
-        xkb_variant nodeadkeys
-        xkb_options compose:caps
+    xkb_layout de
+    xkb_variant nodeadkeys
+    xkb_options compose:caps
 }
 
 # set input settings for all touchpads
@@ -111,11 +111,11 @@ input type:keyboard {
 # three fingers = middle click
 # two fingers = right click
 input type:touchpad {
-      accel_profile flat
-      dwt enabled
-      tap enabled
-      middle_emulation enabled
-      natural_scroll enabled
+    accel_profile flat
+    dwt enabled
+    tap enabled
+    middle_emulation enabled
+    natural_scroll enabled
 }
 
 

@@ -1,7 +1,6 @@
 # Daemons
 exec syncthing
 exec "GDK_BACKEND=x11 nm-applet --indicator"
-exec mako
 
 # Programs
 exec owncloud

@@ -30,7 +30,7 @@ outgoing    = log master ^orgin/master            # show only what is in master 
 praise      = blame
 precommit   = diff --cached -w --word-diff=color --word-diff-regex='[^[:space:]<>]+'
 prestage    = diff -w --word-diff=color
-remotes     = remote -v
+remotes     = remote --verbose
 remove      = rm
 resave      = commit --amend
 rewrite     = rebase -i
@@ -63,8 +63,8 @@ lgs = l --stat
 ls  = ls-files
 a   = add
 aa  = add --verbose -A
-ap  = add -v -p
-au  = add -v -u
+ap  = add --verbose -p
+au  = add --verbose -u
 # list branches sorted by last modified
 la  = "!git config -l | grep alias | cut -c 7-"
 b   = branch
@@ -86,7 +86,7 @@ cob = checkout -b
 cl  = clone
 undo-commit = "!f() { git format-patch HEAD^ && git reset --hard HEAD~; }; f"
 r   = remote
-rv  = remote -v
+rv  = remote --verbose
 ra  = remote add
 rao = remote add origin
 diff-file-last-commit = "!f() { \

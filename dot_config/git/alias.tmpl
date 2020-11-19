@@ -60,6 +60,7 @@ what        = show -w
 l   = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 lgd = l -p
 lgs = l --stat
+axe = log --reverse -p -w -S
 ls  = ls-files
 a   = add
 aa  = add --verbose -A
@@ -74,6 +75,8 @@ ca  = commit --verbose --all
 cm  = commit --verbose --message
 cam = commit --verbose --all --message
 m   = commit --verbose --amend
+am  = commit --verbose --all --amend
+amne  = commit --verbose --all --amend --no-edit
 mne = commit --verbose --amend --no-edit
 # `git di $number` shows the diff between the state `$number` revisions ago and the current state
 di  = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
@@ -81,6 +84,7 @@ d   = diff
 ds  = diff --stat
 dc  = diff --cached
 s   = status -s
+st  = status
 co  = checkout
 cob = checkout -b
 cl  = clone
@@ -120,5 +124,7 @@ plmnvs   = pull --no-rebase --no-verify-signatures
 psuo     = "!f(){ git push --set-upstream origin $(git symbolic-ref --short HEAD); };f"
 ff       = merge --ff --ff-only @{u}
 reset-remote = "!f(){ git fetch origin; git reset --hard ${1:-'@{u}'}; git clean -f -d -x; };f"
+chp  = cherry-pick
+chpx = cherry-pick -x
 
 # vim:filetype=gitconfig expandtab shiftwidth=4

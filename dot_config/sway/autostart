@@ -1,7 +1,13 @@
-# Daemons
-exec syncthing
-exec "GDK_BACKEND=x11 nm-applet --indicator"
+# These commands are only run when sway is first started. They don't get run on sway restarts.
+# This is fine, as most of the time the programs just keep running.
 
-# Programs
-exec owncloud
-exec wal -Rne
+exec {
+    # Daemons
+    syncthing
+    "GDK_BACKEND=x11 nm-applet --indicator"
+
+    # Programs
+    owncloud
+    wal -Rne
+    blueman-tray
+}

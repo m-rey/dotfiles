@@ -337,6 +337,10 @@ for_window [app_id="org.gnome.Nautilus"] border none
 for_window [app_id="org.gnome.Terminal"] border none
 for_window [app_id="eog"] border none
 
+### Floating Windows
+# app_id can be found using `swaymsg -t get_tree`
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable  #  pw manager autofill requests
+
 ### Autostart
 include ./autostart
 

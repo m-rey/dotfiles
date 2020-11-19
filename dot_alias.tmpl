@@ -22,5 +22,8 @@ alias rg="rg --hidden --auto-hybrid-regex --smart-case"
 alias dsf="diff-so-fancy"
 alias load_nvm='[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"'
 alias load_rvm='[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"'
+alias urldecode='python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))"'
+alias urlencode='python3 -c "import sys, urllib.parse as ul; print(ul.quote_plus(sys.argv[1]))"'
+alias irc="ssh -t {{ .irc_ssh_bouncer }} tmux attach"
 
 # vim:filetype=zsh

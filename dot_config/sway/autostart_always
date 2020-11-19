@@ -1,0 +1,18 @@
+# these programs are run every time sway is started or restarted. This differs
+# from `autostart`, where programs only run on first sway start.
+# autostart_always is useful for setting things like themes
+
+## theme
+exec_always {
+    # load user invironment
+    systemctl --user import-environment
+    
+    # set theme
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
+    
+    # initialize wob
+    test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
+    tail -f $SWAYSOCK.wob | wob
+}

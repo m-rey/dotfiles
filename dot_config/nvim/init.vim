@@ -11,6 +11,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
 Plug 'junegunn/fzf.vim'             " Wrapper around fzf
 " filetypes
 Plug 'cespare/vim-toml'             " add syntax support for .toml files
+Plug 'https://gitlab.com/dbeniamine/todo.txt-vim'  " todo.txt support
 " Theme
 Plug 'dylanaraps/wal.vim'
 Plug 'chrisbra/Colorizer'

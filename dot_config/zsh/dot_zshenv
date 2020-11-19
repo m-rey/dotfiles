@@ -103,7 +103,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # set path
 typeset -U PATH path
-path=("$HOME/.local/bin" $NVM_DIR/versions/node/*/bin([-1]) "$HOME/go/bin" "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.yarn/bin" "$HOME/.rbenv/bin" "$HOME/.cabal/bin" "$HOME/.emacs.d/bin" "$HOME/.linuxbrew/bin" ".linuxbrew/sbin" "$HOME/.rvm/bin" $path)
+path=("$HOME/.local/bin" $NVM_DIR/versions/node/*/bin([-1]) "/snap/bin" "$HOME/go/bin" "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.yarn/bin" "$HOME/.rbenv/bin" "$HOME/.cabal/bin" "$HOME/.emacs.d/bin" "$HOME/.linuxbrew/bin" ".linuxbrew/sbin" "$HOME/.rvm/bin" $path)
 export PATH
 
 # disable annoying bells

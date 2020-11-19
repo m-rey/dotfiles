@@ -1,11 +1,9 @@
-# Options passed to GNU diff when generating patches
-QUILT_DIFF_OPTS="--show-c-function" 
-# QUILT_DIFF_OPTS="" 
-# Options passed to GNU patch when applying patches
-#QUILT_PATCH_OPTS="--ignore-whitespace --unified-reject" 
-
-# Options to pass to commands (QUILT_${COMMAND}_ARGS)
+# Additional options passed to GNU diff when generating patches
+QUILT_DIFF_OPTS="--show-c-function"
+# Additional options passed to GNU patch when applying patches
+QUILT_PATCH_OPTS="--reject-format=unified --backup -p1" 
+# Additional options passed to GNU patch when refreshing patches.
+QUILT_REFRESH_ARGS="--sort --diffstat --backup -p1" 
+# Additional options to pass to commands (QUILT_${COMMAND}_ARGS)
 QUILT_PUSH_ARGS="--color=auto" 
 QUILT_DIFF_ARGS="--color=auto" 
-QUILT_REFRESH_ARGS="--backup -p0" 
-QUILT_PATCH_OPTS="--unified-reject-files --backup" 

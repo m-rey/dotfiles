@@ -127,6 +127,12 @@ source "$ZDOTDIR/.zsh_plugins.sh"
 # enable pipx completions
 eval "$(register-python-argcomplete pipx)"
 
+# enable fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# enable dephell autocomplete
+source "/home/mrey/.local/share/dephell/_dephell_zsh_autocomplete"
+
 # use rvm to set ruby version
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 

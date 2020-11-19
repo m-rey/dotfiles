@@ -1,7 +1,6 @@
 #window {
-    background-color: #1d2021;
-    color: #ebdbb2;
-    border-radius: 10px;
+    background-color: #272822;
+    color: #f8f8f2;
 }
 
 #outer-box {
@@ -9,8 +8,8 @@
 }
 
 #input {
-    background-color: #282828;
-    color: #fbf1c7;
+    background-color: #272822;
+    color: #f8f8f2;
 
     border: none;
     border-radius: 0;
@@ -19,7 +18,7 @@
 }
 
 #inner-box {
-    background-color: #282828;
+    background-color: #272822;
 }
 
 #text {
@@ -34,8 +33,8 @@
 }
 
 #entry:selected {
-    background-color: #504945;
-    color: #fbf1c7;
+    background-color: #f4bf75;
+    color: #272822;
 
     outline: 0;
 }

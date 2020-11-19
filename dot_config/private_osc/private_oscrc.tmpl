@@ -64,7 +64,7 @@ build-jobs = 4
 # alternate filesystem layout: have multiple subdirs, where colons were.
 checkout_no_colon = 0 
 # change filesystem layout: avoid checkout within a project or package dir.
-#checkout_rooted = 0
+checkout_rooted = 1
 # local files to ignore with status, addremove, ....
 #exclude_glob = .osc CVS .svn .* _linkerror *~ #*# *.orig *.bak *.changes.vctmp.*
 # keep passwords in plaintext.
@@ -75,7 +75,7 @@ plaintext_passwd = 0
 # limit the age of requests shown with 'osc req list'.
 # this is a default only, can be overridden by 'osc req list -D NNN'
 # Use 0 for unlimted.
-#request_list_days = 0
+request_list_days = 0
 # show info useful for debugging
 #debug = 1
 # show HTTP traffic useful for debugging
@@ -93,7 +93,7 @@ plaintext_passwd = 0
 # check for unversioned/removed files before commit
 #check_filelist = 1
 # check for pending requests after executing an action (e.g. checkout, update, commit)
-#check_for_request_on_action = 0
+check_for_request_on_action = 1
 # what to do with the source package if the submitrequest has been accepted. If
 # nothing is specified the API default is used
 #submitrequest_on_accept_action = cleanup|update|noupdate
@@ -106,7 +106,7 @@ plaintext_passwd = 0
 # sorry your SR %(reqid)s (request type: %(type)s) for
 # %(tgt_project)s/%(tgt_package)s has been declined because...
 #review requests interactively (default: off)
-#request_show_review = 1
+request_show_review = 1
 # if a review is accepted in interactive mode and a group
 # was specified the review will be accepted for this group (default: off)
 #review_inherit_group = 1
@@ -126,7 +126,7 @@ email = {{ .persona.real.email_work }}
 
 [https://api.opensuse.org]
 user={{ .osc.username_obs }}
-trusted_prj=openSUSE:Factory openSUSE:Tumbleweed openSUSE:Leap:15.0 openSUSE:Leap:15.1 X11:Wayland network devel:languages:rust devel:tools:compiler Archiving:Backup network:utilities openSUSE:Leap:15.1:Update openSUSE:Containers:Leap:15.1 devel:languages:rust:crates
+trusted_prj=openSUSE:Factory openSUSE:Tumbleweed openSUSE:Leap:15.0 openSUSE:Leap:15.1 X11:Wayland network devel:languages:rust devel:tools:compiler Archiving:Backup network:utilities openSUSE:Leap:15.1:Update openSUSE:Containers:Leap:15.1 devel:languages:rust:crates devel:tools security
 credentials_mgr_class=osc.credentials.KeyringCredentialsManager:keyring.backends.SecretService.Keyring
 
 [https://api.suse.de]

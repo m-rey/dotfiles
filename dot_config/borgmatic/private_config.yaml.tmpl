@@ -14,7 +14,7 @@ location:
     # identity file or port.
     repositories:
     #   - user@backupserver:sourcehostname.borg
-            - /mnt/veracrypt1/BACKUP/{{ .chezmoi.fullHostname }}/borg
+            - /mnt/veracrypt2/BACKUP/{{ .chezmoi.fullHostname }}/borg
     # Stay in same file system (do not cross mount points). Defaults to false.
     #one_file_system: true
 
@@ -176,13 +176,13 @@ retention:
     keep_daily: 7
 
     # Number of weekly archives to keep.
-    #keep_weekly: 4
+    keep_weekly: 1
 
     # Number of monthly archives to keep.
-    #keep_monthly: 6
+    keep_monthly: 1
 
     # Number of yearly archives to keep.
-    #keep_yearly: 1
+    keep_yearly: 1
 
     # When pruning, only consider archive names starting with this prefix.
     # Borg placeholders can be used. See the output of "borg help placeholders" for

@@ -88,6 +88,16 @@ export HOMEBREW_REPOSITORY="$HOME/.linuxbrew/Homebrew"
 # it may be worked aound by adding the "--disable-content-trust" flag
 export DOCKER_CONTENT_TRUST=1
 
+# By default the conflict file (the file with "conflicted copy" in its
+# name that contains your local conflicting changes) is not uploaded to
+# the server. However, in some scenarios it makes a lot of sense to upload
+# these conflicting changes such that local work can become visible even
+# if the conflict won’t be resolved immediately.
+export OWNCLOUD_UPLOAD_CONFLICT_FILES=1
+
+# Deactivate Microsoft spyware/telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # set nvm directory
 export NVM_DIR="$HOME/.nvm"
 

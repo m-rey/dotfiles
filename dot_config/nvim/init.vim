@@ -10,8 +10,10 @@ Plug 'junegunn/gv.vim'              " Git Commit browser
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy finder
 Plug 'junegunn/fzf.vim'             " Wrapper around fzf
 " filetypes
+Plug 'pearofducks/ansible-vim'
 Plug 'cespare/vim-toml'             " add syntax support for .toml files
 Plug 'https://gitlab.com/dbeniamine/todo.txt-vim'  " todo.txt support
+Plug 'editorconfig/editorconfig-vim'
 " Theme
 Plug 'dylanaraps/wal.vim'
 Plug 'chrisbra/Colorizer'
@@ -37,6 +39,13 @@ Plug 'ncm2/ncm2-pyclang'
 " Include Phpactor
 Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 Plug 'phpactor/ncm2-phpactor'
+
+" LaTeX SupPoRt
+Plug 'lervag/vimtex'
+"snippet support
+Plug 'sirver/ultisnips'
+
+
 call plug#end()
 
 
@@ -53,6 +62,8 @@ set expandtab
 set shiftwidth=2
 set autoindent
 set smartindent
+" To ensure that editorconfig plugin works well with Tim Pope's fugitive, use the following patterns array:
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " move lines up and down with Alt+j / Alt+k
 nnoremap <A-j> :m .+1<CR>==
@@ -62,7 +73,7 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" move lines up and down with Alt+Up / Alt+Down   
+" move lines up and down with Alt+Up / Alt+Down
 nnoremap <A-Down> :m .+1<CR>==
 nnoremap <A-Up> :m .-2<CR>==
 inoremap <A-Down> <Esc>:m .+1<CR>==gi
@@ -149,3 +160,16 @@ let g:ncm2_pyclang#database_path = [
 let g:LanguageClient_serverCommands = {
   \ 'python': ['pyls']
   \ }
+
+"set config for vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+"set config for utilsnips
+Plug 'sirver/ultisnips'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'

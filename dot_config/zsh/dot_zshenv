@@ -1,6 +1,10 @@
 # environmental stuff
 export XDG_CACHE_HOME="$HOME/.cache"  # needed for wofi
-export XDG_CONFIG_HOME="$HOME/.config"  # needs to be set as git only loads config from ~/.config/git/gitconfig if it is set. See https://git-scm.com/docs/git-config/2.25.2#Documentation/git-config.txt---global
+export XDG_CONFIG_HOME="$HOME/.config"  # needs to be set as git doesn't load config from ~/.config/git/gitconfig otherwise. See https://git-scm.com/docs/git-config/2.25.2#Documentation/git-config.txt---global
+export XDG_SESSION_TYPE="wayland"
+export XDG_SESSION_DESKTOP="sway"
+export XDG_CURRENT_DESKTOP="sway"
+
 export LANG=en_US.UTF-8
 export TERM="xterm-kitty"
 export TERMINAL='kitty'
@@ -9,11 +13,13 @@ export PAGER='less'
 export MANPAGER='less -s -M +Gg'
 export EDITOR='nvim'
 export VISUAL='nvim'
-export MAN_POSIXLY_CORRECT=true # nicer manpage handling
-export WORDCHARS='*?_-.[]~=&;!#$&(){}<>' # for shell word boundaries. Default config, but without '/'
-export HISTSIZE=1000000 # max length of history file to load
-export HISTFILE="$ZDOTDIR/.zsh_history" # set history file location
-export SAVEHIST=$HISTSIZE # needed for history to be saved
+export MAN_POSIXLY_CORRECT=true  # nicer manpage handling
+export WORDCHARS='*?_-.[]~=&;!#$&(){}<>'  # for shell word boundaries. Default config, but without '/'
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000  # max length of history file to load
+export HISTFILE="$ZDOTDIR/.zsh_history"  # set history file location
+export SAVEHIST=$HISTSIZE  # needed for history to be saved
+export HISTTIMEFORMAT="[%F %T] "
 
 # Print timing statistics for everything which takes longer than 5 seconds of
 # user + system time ('sleep 6' does not work because of 0% user/system time!).
@@ -26,21 +32,22 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 #SSH_KEY_PATH="~/.ssh/id_rsa"
 
 # wayland compatibility
-export GDK_BACKEND='wayland' # use wayland as default for GDK stuff like LibreOffice. # NOTE: put "GDK_BACKEND=x11" before command if it doesn't run (display error)
-export MOZ_ENABLE_WAYLAND=1 #enable wayland support in Firefox # NOTE: DISABLE IF BROKEN on Firefox >=73
+export GDK_BACKEND='wayland,x11'  # use wayland as default for GDK stuff like LibreOffice. Otherwise x11.
+export MOZ_ENABLE_WAYLAND=1  # enable wayland support in Firefox
 export _JAVA_AWT_WM_NONREPARENTING=1 # fix java stuff in swaywm (especially IntelliJ)
-export QT_QPA_PLATFORM=wayland-egl
-export CLUTTER_BACKEND=wayland
+export CLUTTER_BACKEND="wayland"  # this can prevent programs from starting. therefore, this should be set per app instead of globally.
+export QT_QPA_PLATFORM="wayland-egl"
 export QT_QPA_PLATFORMTHEME="wayland"
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-export ECORE_EVAS_ENGINE=wayland-egl
-export ELM_ENGINE=wayland_egl
-export SDL_VIDEODRIVER=wayland
+#export QT_WAYLAND_FORCE_DPI=physical  # set dpi to physical dpi of display
+export ECORE_EVAS_ENGINE="wayland-egl"
+export ELM_ENGINE="wayland_egl"
+export SDL_VIDEODRIVER="wayland"  # this can prevent programs from starting old sdl games. therefore, this should be set per app instead of globally.
 export NO_AT_BRIDGE=1
 
 # set GTK theme
-export QT_STYLE_OVERRIDE=adwaita
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE="adwaita"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # fzf
 # --files: List files that would be searched but do not search# --no-ignore: Do not respect .gitignore, etc...
@@ -49,7 +56,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # long date format in ls(1)
-export TIME_STYLE=long-iso
+export TIME_STYLE="long-iso"
 
 # colored less
 # adapted from https://wiki.archlinux.org/index.php/Color_output_in_console#man
@@ -105,6 +112,11 @@ export NVM_DIR="$HOME/.nvm"
 typeset -U PATH path
 path=("$HOME/.local/bin" $NVM_DIR/versions/node/*/bin([-1]) "/snap/bin" "$HOME/go/bin" "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.yarn/bin" "$HOME/.rbenv/bin" "$HOME/.cabal/bin" "$HOME/.emacs.d/bin" "$HOME/.linuxbrew/bin" ".linuxbrew/sbin" "$HOME/.rvm/bin" $path)
 export PATH
+
+# set golang env vars
+export GOPATH="$HOME/go"
+export GOBIN="$(go env GOPATH)/bin"
+
 
 # disable annoying bells
 xset b off

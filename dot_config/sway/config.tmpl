@@ -157,6 +157,9 @@ bindsym $mod+Period exec $appmenu
 # mouse button for dragging
 floating_modifier $mod normal
 
+# focus follows the mouse
+focus_follows_mouse yes
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -212,6 +215,7 @@ bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
+bindsym $mod+tab workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -232,11 +236,10 @@ bindsym $mod+Shift+p move workspace output left
 
 ## Layout stuff
 
-# you can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
-bindsym $mod+b splith
-bindsym $mod+v splitv
+# you can "split" the current object of your focus. Use
+# $mod+b to toggle between vertical and horizontal split
+# direction
+bindsym $mod+b split toggle
 
 # switch the current container between different layout styles
 bindsym $mod+s layout stacking
@@ -245,6 +248,9 @@ bindsym $mod+e layout toggle split
 
 # make the current focus fullscreen
 bindsym $mod+f fullscreen
+
+# toggle sticky
+bindsym $mod+Shift+Alt+space sticky toggle
 
 # toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
@@ -340,7 +346,11 @@ bindsym $mod+r mode "resize"
 #        inactive_workspace #32323200 #32323200 #5c5c5c
 #    }
 #}
-bar swaybar_command waybar
+#
+
+bar {
+    swaybar_command waybar
+}
 
 ### Borders
 default_border pixel 5
@@ -368,6 +378,7 @@ client.unfocused        $color8 $color8 $foreground $color8 $color0
 client.urgent           $color1 $color1 $color0     $color1 $color1
 
 #### gaps
+smart_gaps on
 gaps inner 10
 
 ### further configs based on host

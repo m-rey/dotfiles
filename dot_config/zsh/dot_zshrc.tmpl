@@ -32,19 +32,23 @@ setopt auto_menu # automatically use menu completion
 setopt auto_pushd
 setopt autocd
 setopt completeinword  # tab-complete while cursor is in word
-setopt extended_history
 setopt extendedglob  # use nice things like exceptions in globs: `git add */*.txt~*/secret.txt`
 setopt globdots  # match dotfiles
-setopt hist_ignore_all_dups  # remove older duplicate entries from history
-setopt hist_ignore_space
-setopt hist_reduce_blanks  # remove superfluous blanks from history items
 setopt interactivecomments  # alows to coment out stuff directy in terminal
 setopt no_complete_aliases # https://superuser.com/a/445491
                            # this ACTIVATES alias completion. I know that it looks wrong
+
+setopt extended_history  # record timestamp of command in HISTFILE
+setopt share_history  # share history between different instances of the shell
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups  # remove older duplicate entries from history
+setopt hist_ignore_space  # ignore commands that start with space
+setopt hist_reduce_blanks  # remove superfluous blanks from history items
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+
 setopt nobeep  # no beeps
 setopt prompt_subst
 setopt pushd_ignore_dups
-setopt share_history  # share history between different instances of the shell
 
 # autocompletion
 # See http://zsh.sourceforge.net/Doc/Release/Style-and-Tag-Index.html for more information

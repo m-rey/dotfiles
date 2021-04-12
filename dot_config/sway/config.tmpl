@@ -105,6 +105,19 @@ bindswitch --reload --locked lid:off output $monitor_notebook enable
 #    middle_emulation enabled
 #}
 
+# hide mouse cursor when not used
+seat * hide_cursor 8000
+
+input * {
+    accel_profile flat
+    # dwt = disable while typing
+    dwt enabled
+    pointer_accel 1
+    repeat_delay 250
+    scroll_method on_button_down
+
+}
+
 # set input layout, compose key for all keyboards
 input type:keyboard {
     xkb_layout de
@@ -113,13 +126,11 @@ input type:keyboard {
 }
 
 # set input settings for all touchpads
-# Note: dwt = disable while typing
-# three fingers = middle click
-# two fingers = right click
 input type:touchpad {
-    accel_profile flat
-    dwt enabled
     tap enabled
+    # One finger tap for LMB and two finger tap for RMB
+    tap_button_map lrm
+    # three fingers = middle click
     middle_emulation enabled
     natural_scroll enabled
 }

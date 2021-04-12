@@ -354,20 +354,8 @@ bar {
 
 ### Borders
 default_border pixel 5
-
-# exclude GNOME applications
-# app_id is the name-part of the .desktop file
-for_window [app_id="org.gnome.Nautilus"] border none
-for_window [app_id="org.gnome.Terminal"] border none
-for_window [app_id="eog"] border none
-
-### Floating Windows
-# app_id can be found using `swaymsg -t get_tree`
-for_window [app_id="org.keepassxc.KeePassXC"] floating enable  #  pw manager autofill requests
-
-### Autostart
-include ./autostart
-include ./autostart_always
+default_floating_border pixel 5
+hide_edge_borders smart
 
 ### Theme
 include "$HOME/.cache/wal/colors-sway"

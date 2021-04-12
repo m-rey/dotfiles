@@ -6,7 +6,6 @@
 #exec xrdb -load <(echo "Xft.dpi: 96")
 exec xrdb -load ~/.Xresources
 
-
 ### Variables
 
 # Logo key. Use Mod1 for Alt.
@@ -19,7 +18,7 @@ set $up k
 set $right l
 
 # terminal emulator to use
-set $term kitty
+set $term "kitty --single-instance"
 
 # application launcher to use
 # Note: it's recommended that you pass the final command to sway

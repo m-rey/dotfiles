@@ -89,6 +89,9 @@ inoremap <A-Up> <Esc>:m .-2<CR>==gi
 vnoremap <A-Down> :m '>+1<CR>gv=gv
 vnoremap <A-Up> :m '<-2<CR>gv=gv
 
+" [ Control + c ] - Copy Visual Selection to wl-copy
+vmap <C-c> y:call system("wl-copy", getreg("\""))<CR>
+
 " enable unlimited undos. You can undo changes, even when you closed the
 " terminal!
 if !isdirectory($HOME . "/.config/nvim/undodir")

@@ -24,6 +24,9 @@ alias load_nvm='[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" && [ -s "$N
 alias load_rvm='[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"'
 alias urldecode='python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))"'
 alias urlencode='python3 -c "import sys, urllib.parse as ul; print(ul.quote_plus(sys.argv[1]))"'
-alias irc="ssh -t {{ .irc_ssh_bouncer }} tmux attach"
+alias irc="ssh -t {{ .irc_ssh_bouncer }} tmux attach -t irc || ssh -t {{ .irc_ssh_bouncer }} tmux new -s irc weechat"
+alias gksu="sudo env XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR"
+alias ksudo="gksu"
+alias kdesu="gksu"
 
 # vim:filetype=zsh

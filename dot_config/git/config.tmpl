@@ -57,7 +57,7 @@
 [includeIf "gitdir:~/repos/{{ .persona.real.username }}/"]
     path = config_realpersona
 
-[includeIf "gitdir:~/repos/{{ .persona.real.username }}/{{ .persona.real.company }}"]
+[includeIf "gitdir:~/repos/{{ .persona.real.username }}/{{ .persona.real.company }}/"]
     path = config_workpersona
 
 # vim:filetype=gitconfig expandtab shiftwidth=4

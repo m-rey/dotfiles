@@ -4,3 +4,38 @@ ignore-empty-password
 indicator-caps-lock
 daemonize
 color=000000
+# clock
+# no-unlock-indicator
+# timestr=%a, %B %d
+# datestr=%I:%M %p
+# image=~/Pictures/lock.png
+
+# Ring
+#indicator-radius=230
+#indicator-thickness=5
+#line-uses-ring
+#line-uses-inside
+#
+#inside-color=#5e81ac00
+#inside-ver-color=#5e81ac00
+#inside-caps-lock-color=#eceff400
+#inside-wrong-color=#5e81ac00
+#inside-clear-color=#5e81ac00
+#ring-ver-color=#5e81ac00
+#line-wrong-color=#bf616a
+#ring-wrong-color=#bf616a
+#bs-hl-color=#bf616a
+#ring-clear-color=#ebcb8b
+#ring-color=#4c566a00
+#key-hl-color=#d08770
+#separator-color=#5e81ac00
+#layout-text-color=#eceff400
+#line-wrong-color=#d08770
+#
+## Text color
+#font-size=20
+#text-color=#d8dee900
+#text-clear-color=#d8dee900
+#text-ver-color=#d8dee900
+#text-wrong-color=#d8dee900
+#text-caps-lock-color=#d8dee900

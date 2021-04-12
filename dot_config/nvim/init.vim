@@ -49,19 +49,27 @@ Plug 'sirver/ultisnips'
 call plug#end()
 
 
-syntax enable                             
+" Native config
+syntax enable
+set number
+"set relativenumber
+set ruler
+"set cursorline
+set showmode
+"set termguicolors
+set autoindent
+set smartindent
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+
+"let g:airline_theme='base16'
 colorscheme wal
 let g:colorizer_auto_filetype='css,html,conf,tmpl,theme'
 let g:colorizer_colornames = 0
 let g:colorizer_disable_bufleave = 1
 let g:colorizer_use_virtual_text = 1
 
-"let g:airline_theme='base16'
-set showmode               
-set expandtab
-set shiftwidth=2
-set autoindent
-set smartindent
 " To ensure that editorconfig plugin works well with Tim Pope's fugitive, use the following patterns array:
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 

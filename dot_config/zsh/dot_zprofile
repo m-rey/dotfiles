@@ -5,8 +5,7 @@ eval $(keychain --quiet --agents ssh,gpg --eval --systemd --noask)
 
 # start sway automatically from tty1
 if [ "$(tty)" = "/dev/tty1" ]; then
-    export XDG_SESSION_DESKTOP="sway"
-    exec sway
+    systemd-cat --identifier=sway sway $@
 fi
 
 # vim:filetype=zsh expandtab shiftwidth=4

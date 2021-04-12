@@ -1,0 +1,21 @@
+utf8-strings
+auto-key-locate local,keyserver
+
+# The default key to sign with. If this option is not used, the default key is
+# the first key found in the secret keyring
+
+default-key {{ .persona.real.pgp_fingerprint }}
+#default-key {{ .persona.alt.pgp_fingerprint }}
+
+# get rid of copyright notice
+no-greeting
+
+# Display long key IDs
+keyid-format 0xlong
+
+# List all keys (or the specified ones) along with their fingerprints
+with-fingerprint
+
+keyserver-options no-honor-keyserver-url,include-revoked,no-import-clean,no-self-sigs-only
+
+allow-freeform-uid

@@ -1,0 +1,11 @@
+#!/bin/sh
+for package in "$@"
+do
+  echo "removing config files for ${package}"
+  for file in $(rpm --query --configfiles "${package}")
+  do
+    echo "  removing ${file}"
+    rm -f "${file}"
+  done
+  rpm -e "${package}"
+done

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Prompt the user to select an output and list avaliable resolutions
+# based on https://codeberg.org/arran/dotfiles/src/branch/master/private_dot_local/scripts/executable_resolution-change
+
+outputs=$(swaymsg -t get_outputs | jq -r ".[] | .name")
+total_outputs=$(echo "${outputs}" | wc -l)
+output_selection=$(echo "${outputs}" | wofi --dmenu --lines ${total_outputs} -p 'Output')
+
+if [ -z "$output_selection" ]
+then
+    exit 0
+fi
+
+modes=$(swaymsg -t get_outputs | jq -r ".[] | select(.name == \"${output_selection}\").modes | .[] | (.width|tostring) + \"x\" + (.height|tostring)" | uniq)
+total_modes=$(echo "${modes}" | wc -l)
+mode_selection=$(echo "${modes}"| wofi --dmenu --lines ${total_modes} -p 'New Resolution')
+
+if [ -z "$mode_selection" ]
+then
+    exit 0
+fi
+
+swaymsg "output ${output_selection} resolution ${mode_selection}"

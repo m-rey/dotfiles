@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://codeberg.org/arran/dotfiles/src/branch/master/private_dot_local/scripts/screenshots/executable_screen-share
+
+wf-recorder -c rawvideo  -x yuv420p -m avi -f pipe:99 99>&1 >&2 | ffplay -f avi -

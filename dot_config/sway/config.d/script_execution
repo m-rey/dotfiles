@@ -1,0 +1,15 @@
+# Script Execution
+
+set $script_dir "$HOME/.local/scripts/"
+
+## new terminal in current working dir
+bindsym $mod+Shift+Return exec "$script_dir/cwd-term"
+
+### focus window
+bindsym $mod+t exec "$script_dir/window-selection"
+
+### Password Manager
+bindsym $mod+p exec kpmenu --database "${HOME}/Documents/Passwords/pw.kdbx" -r --clipboardTool wl-clipboard 
+
+### Resolution Change
+bindsym $mod+Alt+0 exec "$script_dir/resolution-change"

@@ -2,12 +2,15 @@
 # This is fine, as most of the time the programs just keep running.
 
 exec {
-    # Daemons
+    # daemons/agents
     syncthing
-    "GDK_BACKEND=x11 nm-applet --indicator"
+    nm-applet --indicator 
+    /usr/libexec/polkit-gnome-authentication-agent-1
 
-    # Programs
+    # programs
+    blueman-tray
+    keepassxc
+    /opt/Hamsket/hamsket
     owncloud
     wal -Rne
-    blueman-tray
 }

@@ -1,0 +1,14 @@
+# shutdown management
+set $exitmenu "system:  [s]hutdown [l]ock [r]eboot [e]xit [h]ibernate sus[p]end"
+bindsym Shift+$mod+m      mode $exitmenu
+mode $exitmenu {
+	bindsym s         exec --no-startup-id systemctl poweroff, mode "default"
+	bindsym Shift+s   exec --no-startup-id systemctl poweroff -i, mode "default"
+	bindsym l         exec --no-startup-id '$lockscreen', mode "default"
+	bindsym r         exec --no-startup-id systemctl reboot, mode "default"
+	bindsym e         exec --no-startup-id swaymsg exit, mode "default"
+	bindsym h         exec --no-startup-id $lockscreen && systemctl hibernate, mode "default" 
+	bindsym p 	  exec --no-startup-id $lockscreen && systemctl suspend, mode "default"
+	bindsym Return    mode "default"
+	bindsym Escape    mode "default"
+}

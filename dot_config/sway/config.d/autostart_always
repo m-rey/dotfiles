@@ -5,7 +5,8 @@
 ## theme
 exec_always {
     # load user invironment
-    systemctl --user import-environment
+    systemctl --user import-environment DISPLAY SWAYSOCK WAYLAND_DISPLAY
+    hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY SWAYSOCK WAYLAND_DISPLAY
     
     # set theme
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'

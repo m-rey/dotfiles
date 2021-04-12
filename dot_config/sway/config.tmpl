@@ -357,9 +357,9 @@ client.urgent           $color1 $color1 $color0     $color1 $color1
 gaps inner 10
 
 ### further configs based on host
-include "./{{ .chezmoi.fullHostname }}.conf"
+include "./{{ .chezmoi.hostname }}"
 
 ### further configs
-include ./config.d/*.conf
+include ./config.d/*
 
 # vim:filetype=conf expandtab shiftwidth=4

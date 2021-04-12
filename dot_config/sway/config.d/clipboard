@@ -1,0 +1,3 @@
+# Clipboard manager
+exec wl-paste --type text --watch clipman store
+bindsym $mod+v exec clipman pick --tool wofi

@@ -1,0 +1,57 @@
+# Sway Window Rules
+## app_id is the name-part of the .desktop file
+## app_id can be found using `swaymsg -t get_tree`
+
+## Default workspaces for common programs
+assign {
+
+    ### Workspace 1 - Web
+    [app_id="^firefox$"] 1
+    [class="^(Chromium-browser|Google-chrome)$"] 1
+    ### Workspace 2 - Email
+    [app_id="^thunderbird$"] 2
+    ### Workspace 3 - Chat/IRC
+    [class="^(Hamsket|Signal)$"] 3
+    ### Workspace 4 - Files
+    [app_id="^thunar$"] 4
+
+}
+
+for_window {
+
+    ## Auto float apps
+    [app_id="keepassxc" title="KeePassXC(.*)Browser"] floating enable
+    [app_id="pavucontrol"] floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 330
+    [app_id="nm-connection-editor$"] floating enable
+    [title="^Open File$"] floating enable
+    [app_id="firefox" title="Choose User Profile$"] floating enable
+    [app_id="firefox" title="(^Picture-in-Picture$|^Launch Application$)"] floating enable, sticky enable
+    [title=".+[Ss]haring (Indicator|your screen)"] floating enable, sticky enable
+    [window_role="GtkFileChooserDialog"] resize set 800 600, move position center
+
+    ## Default floating for window roles
+    [window_role="pop-up"] floating enable
+    [window_role="bubble"] floating enable
+    [window_role="task_dialog"] floating enable
+    [window_role="Preferences"] floating enable
+    [window_type="dialog"] floating enable
+    [window_type="menu"] floating enable
+    [instance="update_installer"] floating enable	
+
+    ### scratchpad - pw-manager
+    #[app_id="org.keepassxc.KeePassXC"] move scratchpad
+
+    ## float terminal menu
+    #[title="^launcher$"] floating enable, border none, opacity 0.8, resize set 400 300, move position center
+
+    ## Default border hiding
+    [app_id="eog"] border none
+
+    ## Tag xwayland windows as such
+    [shell="xwayland"] title_format "[X] %title"
+
+    # Inhibit Idle when ANY application is fullscreen
+    [class="^.*"] inhibit_idle fullscreen
+    [app_id="^.*"] inhibit_idle full
+
+}

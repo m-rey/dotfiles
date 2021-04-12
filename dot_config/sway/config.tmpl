@@ -26,6 +26,10 @@ set $windowmenu exec ./window.sh
 set $appmenu wofi --show drun | xargs swaymsg exec
 set $climenu wofi --show run | xargs swaymsg exec
 
+# take screenshots
+bindsym Print exec grim "screenshot-$(date +'%F-%H-%M-%S').png"
+bindsym Print+$mod exec grim -g "$(slurp)" "screenshot-$(date +'%F-%H-%M-%S').png"
+
 # fzf in kitty as app launcher
 set $fzf_launcher kitty --config \"$HOME/.config/kitty/fzf-launcher.conf\" --class fzf-launcher --detach
 set $fzf_options --reverse

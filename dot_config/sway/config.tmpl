@@ -22,7 +22,7 @@ set $term "kitty --single-instance"
 
 # application launcher to use
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $windowmenu exec ./window.sh
 set $appmenu wofi --show drun | xargs swaymsg exec
 set $climenu wofi --show run | xargs swaymsg exec
 
@@ -131,7 +131,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # start your launcher
-bindsym $mod+d exec $menu
+bindsym $mod+d exec $windowmenu
 bindsym $mod+Comma exec $climenu
 bindsym $mod+Period exec $appmenu
 

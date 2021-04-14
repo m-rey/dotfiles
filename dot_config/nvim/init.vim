@@ -63,8 +63,20 @@ set shiftwidth=4
 set expandtab
 set softtabstop=4
 
+" Try to pick colors that look good on dark background
+set background=dark
 "let g:airline_theme='base16'
 colorscheme wal
+" fancy listchars
+set listchars=tab:»┄,eol:↲,trail:·,precedes:«,extends:»
+
+" Searches
+set incsearch   " Do incremental searching
+set showmatch   " Make curson jump between brackets
+set hlsearch    " Highlight searches
+set ignorecase  " make searches ignore case, unless
+set smartcase   " you actually put uppercase in the search
+
 let g:colorizer_auto_filetype='css,html,conf,tmpl,theme'
 let g:colorizer_colornames = 0
 let g:colorizer_disable_bufleave = 1
